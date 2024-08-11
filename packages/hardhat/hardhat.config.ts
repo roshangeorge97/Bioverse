@@ -10,14 +10,14 @@ const config: any = {
       accounts: [process.env.PRIVATE_KEY as string],
       gasPrice: 1000000000,
     },
-    Sepolia: {
-      url: "https://sepolia.rpc.zora.energy",
-      accounts: [process.env.PRIVATE_KEY as string],
-    },
-    // sepolia: {
-    //   url: process.env.NETWORK_URL,
-    //   accounts: [process.env.PRIVATE_KEY],
+    // Sepolia: {
+    //   url: "https://sepolia.rpc.zora.energy",
+    //   accounts: [process.env.PRIVATE_KEY as string],
     // },
+    sepolia: {
+      url: process.env.NETWORK_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
 
     // sourcify: {
     //   // Disabled by default
