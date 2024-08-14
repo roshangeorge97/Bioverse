@@ -55,13 +55,13 @@ const ethersConfig = defaultConfig({
   enableInjected: true, // true by default
   enableCoinbase: true, // true by default
   rpcUrl: "...", // used for the Coinbase SDK
-  defaultChainId: 1, // used for the Coinbase SDK
+  defaultChainId: 11155111, // used for the Coinbase SDK
 });
 
 // 5. Create a AppKit instance
 createWeb3Modal({
   ethersConfig,
-  chains: [mainnet],
+  chains: [sepolia],
   projectId,
   enableSwaps: true,
   enableOnramp: true,

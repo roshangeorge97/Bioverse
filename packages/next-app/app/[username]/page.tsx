@@ -9,6 +9,9 @@ import {
 import { BrowserProvider, Contract, formatUnits, ethers } from "ethers";
 import React from "react";
 
+import Avvvatars from "avvvatars-react";
+import { Button } from "@/components/ui/button";
+
 const page = ({ params }: { params: { username: string } }) => {
   const { address, chainId, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
@@ -73,12 +76,44 @@ const page = ({ params }: { params: { username: string } }) => {
 
   return (
     <>
-      <div>{params.username}</div>
-      <ConnectButton />
-      <button className="w-24 h-16 bg-blue-300" onClick={sendPayments}>
-        Click me
-      </button>
-      <button onClick={getBalance}>Get User Balance</button>
+      <div className="dark relative flex min-h-screen w-full bg-gray-900">
+        {/* Your existing code */}
+        <div className="absolute top-0 right-0 m-4">
+          <ConnectButton />
+        </div>
+        <div className="w-1/5 min-h-screen bg-gray-200 flex items-center justify-center ">
+          {" "}
+          <div className="h-full w-full bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500">
+            {/* Sidebar content goes here */}
+          </div>
+          {/* Sidebar content goes here, representing the 20% width section */}{" "}
+        </div>
+        <div className="w-4/5 flex flex-col items-center justify-between my-16">
+          <div className="flex flex-col items-center justify-center space-y-10">
+            <Avvvatars value={params.username} size={180} />
+            <div className="font-bold text-gray-200 text-4xl">
+              {params.username}
+            </div>
+          </div>
+          {/* Main content goes here, representing the 80% width section */}
+          {/* <button className="w-24 h-16 bg-blue-300" onClick={sendPayments}>
+            Click me
+          </button> */}
+          {/* <button onClick={getBalance}>Get User Balance</button>
+           */}
+          <div className="flex justify-between items-center space-x-32">
+            <Button className="w-36 h-14 text-xl font-semibold rounded-lg">
+              ETC
+            </Button>
+            <Button className="w-36 h-14 text-xl font-semibold rounded-lg">
+              MATIC
+            </Button>
+            <Button className="w-36 h-14 text-xl font-semibold rounded-lg">
+              WBTC
+            </Button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
