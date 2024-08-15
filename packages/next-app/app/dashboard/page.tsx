@@ -1,20 +1,16 @@
-import React from "react";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
+"use client";
 
-const page = () => {
-  return (
-    <div className="dark relative flex min-h-screen w-full bg-gray-900">
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel>One</ResizablePanel>
-        <ResizableHandle withHandle />
-        <ResizablePanel>Two</ResizablePanel>
-      </ResizablePanelGroup>
-    </div>
-  );
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/dashboard/transactions");
+  }, [router]);
+
+  return null;
 };
 
-export default page;
+export default Page;
