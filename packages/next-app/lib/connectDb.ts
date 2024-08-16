@@ -56,6 +56,18 @@ const documentSchema = new Schema({
       amount: String,
       date: Date,
     },
+
+    { _id: false },
+  ],
+  notifications: [
+    {
+      sender: String,
+      message: String,
+      currency: String,
+      chain: String,
+      amount: String,
+      date: Date,
+    },
     { _id: false },
   ],
 });

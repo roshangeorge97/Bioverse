@@ -78,6 +78,20 @@ const page = ({ params }: { params: { username: string } }) => {
     postTx();
   }
 
+  async function reqPayments() {
+    const senderAddress = address;
+    const receipt = params.username;
+    try {
+      const res = await axios.post("/api/notification", {
+        receipt,
+        senderAddress,
+      });
+      console.log("Res Notif", res);
+    } catch (error) {
+      console.error("An error occurred while requesting payment", error);
+    }
+  }
+
   // const providerT: ethers.JsonRpcProvider =
   //   useEthersProvider() as ethers.JsonRpcProvider;
   // // setProvider(providerT);
@@ -136,6 +150,13 @@ const page = ({ params }: { params: { username: string } }) => {
                 {params.username}
               </div>
             </div>
+
+            <Button
+              className="w-36 h-14 text-xl font-semibold rounded-lg"
+              onClick={async () => await reqPayments()}
+            >
+              Request Payment
+            </Button>
             {/* Main content goes here, representing the 80% width section */}
             {/* <button className="w-24 h-16 bg-blue-300" onClick={sendPayments}>
             Click me
