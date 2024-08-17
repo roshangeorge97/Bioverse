@@ -8,7 +8,7 @@ import { type HTMLAttributes, useState } from "react";
 
 const dataButtons = [
   { label: "Transactions", href: "/dashboard/transactions" },
-  { label: "User Profile", href: "/dashboard/user-profile" },
+  // { label: "User Profile", href: "/dashboard/user-profile" },
   { label: "Scheduled Payments", href: "/dashboard/scheduled-payments" },
   { label: "Notifications", href: "/dashboard/notifications" },
   { label: "Settings", href: "/dashboard/settings" },

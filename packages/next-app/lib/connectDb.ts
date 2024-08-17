@@ -70,6 +70,17 @@ const documentSchema = new Schema({
     },
     { _id: false },
   ],
+  scheduled: [
+    {
+      username: String,
+      message: String,
+      currency: String,
+      chain: String,
+      amount: String,
+      date: Date,
+    },
+    { _id: false },
+  ],
 });
 
 const Document = models.User ?? model("User", documentSchema);
