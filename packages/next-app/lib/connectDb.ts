@@ -74,6 +74,7 @@ const documentSchema = new Schema({
     {
       username: String,
       message: String,
+      forEvery: String,
       currency: String,
       chain: String,
       amount: String,

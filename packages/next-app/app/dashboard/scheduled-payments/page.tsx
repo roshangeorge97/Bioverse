@@ -74,7 +74,7 @@ const page = () => {
           <DialogHeader>
             <DialogTitle>Schedule Payments</DialogTitle>
             <DialogDescription>
-              Schedule yout Payments request here. Click save when you're done.
+              Schedule your Payments request here. Click save when you're done.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
