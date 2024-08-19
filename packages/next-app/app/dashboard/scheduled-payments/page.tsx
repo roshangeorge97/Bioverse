@@ -56,7 +56,7 @@ const Page = () => {
 
   return (
     <>
-      {`you're free`}
+      you&apos;re free
       <div>Scheduled Payments</div>
       <Dialog>
         <DialogTrigger asChild>
