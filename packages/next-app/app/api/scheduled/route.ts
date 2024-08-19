@@ -58,6 +58,7 @@ export const POST = async (request: NextRequest) => {
     const scheduled = {
       username: receiptDoc.user,
       message: "",
+      forEvery: "",
       currency: "",
       chain: "",
       amount: "",
