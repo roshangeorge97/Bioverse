@@ -27,7 +27,7 @@ import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import axios from "axios";
 import { DataTable } from "./data-table";
 
-const page = () => {
+const Page = () => {
   const { address, chainId, isConnected } = useWeb3ModalAccount();
   const [scheduled, setScheduled] = useState<Scheduled[]>([]);
   const [position, setPosition] = React.useState("monthly");
@@ -164,4 +164,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

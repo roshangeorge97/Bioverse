@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";  // Import useRouter
 
-const page = ({ params }: { params: { username: string } }) => {
+const Page = ({ params }: { params: { username: string } }) => {
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
   const [usernameExists, setUsernameExists] = useState(false);
@@ -317,4 +317,4 @@ const page = ({ params }: { params: { username: string } }) => {
   );
 };
 
-export default page;
+export default Page;

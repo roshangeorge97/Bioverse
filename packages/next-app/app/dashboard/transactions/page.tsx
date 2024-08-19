@@ -18,7 +18,7 @@ import {
   useWeb3ModalAccount,
 } from "@web3modal/ethers/react";
 
-const page = () => {
+const Page = () => {
   const { address, chainId, isConnected } = useWeb3ModalAccount();
   const [tx, setTxs] = useState<Transaction[]>([]);
 
@@ -54,4 +54,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
