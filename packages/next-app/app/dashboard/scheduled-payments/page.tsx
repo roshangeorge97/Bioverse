@@ -31,6 +31,10 @@ const Page = () => {
   const { address, chainId, isConnected } = useWeb3ModalAccount();
   const [scheduled, setScheduled] = useState<Scheduled[]>([]);
   const [position, setPosition] = React.useState("monthly");
+  const [username, setUsername] = useState("");
+  const [message, setMessage] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     const checkUsername = async () => {
@@ -54,6 +58,26 @@ const Page = () => {
     checkUsername();
   }, [address]);
 
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("/api/scheduled", {
+        receipt: username,
+        senderAddress: address,
+        message,
+        currency,
+        chain: "Sepolia",
+        amount,
+        position,
+      });
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 404) {
+        // setUsernameExists(false);
+      } else {
+        console.error("An error occurred while checking the username", error);
+      }
+    }
+  };
+
   return (
     <>
       <div>Scheduled Payments</div>
@@ -62,7 +86,7 @@ const Page = () => {
           <button className="relative inline-flex h-14 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
             <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-              Create New Request
+              Create New Schedule
             </span>
           </button>
           {/* <Button>
@@ -73,8 +97,10 @@ const Page = () => {
           <DialogHeader>
             <DialogTitle>Schedule Payments</DialogTitle>
             <DialogDescription>
-  {"Schedule your Payments request here. Click save when you're done."}
-</DialogDescription>
+              {
+                "Schedule your Payments request here. Click save when you're done."
+              }
+            </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
@@ -83,6 +109,8 @@ const Page = () => {
               </Label>
               <Input
                 id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="ml-5 w-60 max-w-lg"
                 placeholder="username"
               />
@@ -93,6 +121,8 @@ const Page = () => {
               </Label>
               <Input
                 id="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="message"
                 className="ml-5 w-60 max-w-lg"
               />
@@ -103,6 +133,8 @@ const Page = () => {
               </Label>
               <Input
                 id="currency"
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
                 placeholder="currency"
                 className="ml-5 w-60 max-w-lg"
               />
@@ -113,6 +145,8 @@ const Page = () => {
               </Label>
               <Input
                 id="amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 placeholder="amount"
                 className="ml-5 w-60 max-w-lg"
               />
@@ -149,7 +183,9 @@ const Page = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save Changes</Button>
+            <Button type="submit" onClick={handleSubmit}>
+              Save Changes
+            </Button>
             <div>
               <Button variant="outline">Cancel</Button>
             </div>
@@ -162,6 +198,5 @@ const Page = () => {
     </>
   );
 };
-
 
 export default Page;

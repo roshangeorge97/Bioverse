@@ -37,8 +37,15 @@ export const GET = async (request: NextRequest) => {
 export const POST = async (request: NextRequest) => {
   try {
     const body = await request.json();
-    const { receipt, senderAddress } = body;
-
+    const {
+      receipt,
+      senderAddress,
+      message,
+      currency,
+      chain,
+      amount,
+      position,
+    } = body;
     if (!receipt || !senderAddress) {
       console.error("Missing receipt or senderAddress in the request body");
       return NextResponse.json(
@@ -57,20 +64,20 @@ export const POST = async (request: NextRequest) => {
 
     const scheduled = {
       username: receiptDoc.user,
-      message: "",
-      forEvery: "",
-      currency: "",
-      chain: "",
-      amount: "",
+      message: message,
+      forEvery: position,
+      currency: currency,
+      chain: chain,
+      amount: amount,
       date: new Date(),
     };
 
     const tx = {
       sender: senderDoc.user,
-      message: "",
-      currency: "",
-      chain: "",
-      amount: "",
+      message,
+      currency,
+      chain,
+      amount,
       date: new Date(),
     };
 

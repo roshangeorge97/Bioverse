@@ -39,7 +39,7 @@ export const POST = async (request: NextRequest) => {
     const body = await request.json();
     // const collection = client.db("bioverse").collection("transactions");
 
-    const { receipt, senderAddress } = body;
+    const { receipt, senderAddress, message, currency, chain, amount } = body;
     const receiptDoc = await Document.findOne({ user: receipt });
     const senderDoc = await Document.findOne({ address: senderAddress });
 
@@ -47,10 +47,10 @@ export const POST = async (request: NextRequest) => {
     if (receiptDoc) {
       const transaction = {
         sender: senderDoc.user,
-        message: "",
-        currency: "",
-        chain: "",
-        amount: "",
+        message,
+        currency,
+        chain: "Sepolia",
+        amount,
         date: new Date(),
       };
 
